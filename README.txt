@@ -1,0 +1,1 @@
+This is a bookkeeping app for golf leagues.
