@@ -4,10 +4,10 @@ class Header extends Component {
   render() {
     return (
       <div>
-        <h1>Player vs Opponent</h1>
-        <h4>Date | Tee Time 4:20 PM</h4>
+        <h1>{this.props.playerName} vs {this.props.opponentName}</h1>
+        <h4>{this.props.date} | Tee Time {this.props.time}</h4>
       </div>
-    )
+    );
   }
 }
 
