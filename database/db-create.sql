@@ -88,5 +88,5 @@ INSERT INTO matches VALUES (1, 1, 2, true, '05:30:00', '2022-05-05');
 
 INSERT INTO scorecards VALUES (1, 1, 1, 3, 1.11, 3.33);
 INSERT INTO scorecards VALUES (2, 1, 2, 4, 2.22, 4.44);
-INSERT INTO scorecards VALUES (3, 1, 3, 1, 3.33, 1.11);
+INSERT INTO scorecards VALUES (3, 1, 3, 1, 3.33, 1.11, 4, 5, 4, 4, 3, 5, 3, 4, 4, 4, 5, 4, 4, 3, 5, 3, 4, 4);
 INSERT INTO scorecards VALUES (4, 1, 4, 2, 4.44, 2.22);

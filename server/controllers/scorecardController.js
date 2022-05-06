@@ -109,7 +109,7 @@ scorecardController.getPlayerScore = (req, res, next) => {
         if (scores[`hole_${i}_score`]) {
           formattedScores[i] = scores[`hole_${i}_score`];
         } else {
-          formattedScores[i] = 'static';
+          formattedScores[i] = '';
         }
       }
       res.locals.playerScore = formattedScores;
@@ -140,10 +140,94 @@ scorecardController.getOpponentScore = (req, res, next) => {
         if (scores[`hole_${i}_opponent_score`]) {
           formattedScores[i] = scores[`hole_${i}_opponent_score`];
         } else {
-          formattedScores[i] = 'static';
+          formattedScores[i] = '';
         }
       }
       res.locals.opponentScore = formattedScores;
+      return next();
+    })
+    .catch((err) => {
+      return next({
+        log: 'Error in scorecardController.getOpponentScore middleware.',
+        message: {
+          err: 'Error in scorecardController.getOpponentScore middleware.',
+        },
+      });
+    });
+};
+
+scorecardController.findOpponent = (req, res, next) => {
+  const text = `
+  SELECT opponent_id
+  FROM scorecards
+  WHERE _id = $1`;
+  const values = [req.params.scorecardId];
+
+  db.query(text, values)
+    .then((sqlRes) => {
+      res.locals.opponentId = sqlRes.rows[0].opponent_id;
+      return next();
+    })
+    .catch((err) => {
+      return next({
+        log: 'Error in scorecardController.findOpponent middleware.',
+        message: {
+          err: 'Error in scorecardController.findOpponent middleware.',
+        },
+      });
+    });
+};
+
+scorecardController.getPlayerDataFromOpponent = (req, res, next) => {
+  const text1 = `
+    SELECT hole_1_opponent_score, hole_2_opponent_score, hole_3_opponent_score, hole_4_opponent_score, hole_5_opponent_score, hole_6_opponent_score, hole_7_opponent_score, hole_8_opponent_score, hole_9_opponent_score
+    FROM scorecards
+    WHERE player_id=$1`;
+  const values1 = [res.locals.opponentId];
+
+  db.query(text1, values1)
+    .then((sqlRes) => {
+      const scores = sqlRes.rows[0];
+      const formattedScores = {};
+      for (let i = 1; i <= 9; i++) {
+        if (scores[`hole_${i}_opponent_score`]) {
+          formattedScores[i] = scores[`hole_${i}_opponent_score`];
+        } else {
+          formattedScores[i] = '';
+        }
+      }
+      res.locals.playerScoreFromOpponent = formattedScores;
+      return next();
+    })
+    .catch((err) => {
+      return next({
+        log: 'Error in scorecardController.getOpponentScore middleware.',
+        message: {
+          err: 'Error in scorecardController.getOpponentScore middleware.',
+        },
+      });
+    });
+};
+
+scorecardController.getOpponentDataFromOpponent = (req, res, next) => {
+  const text2 = `
+    SELECT hole_1_score, hole_2_score, hole_3_score, hole_4_score, hole_5_score, hole_6_score, hole_7_score, hole_8_score, hole_9_score
+    FROM scorecards
+    WHERE player_id=$1`;
+  const values2 = [res.locals.opponentId];
+
+  db.query(text2, values2)
+    .then((sqlRes) => {
+      const scores = sqlRes.rows[0];
+      const formattedScores = {};
+      for (let i = 1; i <= 9; i++) {
+        if (scores[`hole_${i}_score`]) {
+          formattedScores[i] = scores[`hole_${i}_score`];
+        } else {
+          formattedScores[i] = '';
+        }
+      }
+      res.locals.opponentScoreFromOpponent = formattedScores;
       return next();
     })
     .catch((err) => {

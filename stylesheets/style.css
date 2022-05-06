@@ -1,0 +1,126 @@
+body {
+  margin: 0px;
+  font-size: 2.5em;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.Navbar {
+  background-color: #00a878;
+  display: flex;
+  align-items: center;
+}
+
+.PageLinks {
+  /* border: solid; */
+  flex-grow: 1;
+  text-align: center;
+  padding-top: 1em;
+  padding-bottom: 1em;
+  font-size: 0.7em;
+
+  color: #e8ebf7;
+  text-decoration: none;
+}
+
+.MatchLink {
+  /* border: solid; */
+  flex-grow: 1;
+  padding-right: 3%;
+  padding-top: 1em;
+  padding-bottom: 1em;
+}
+
+button {
+  float: right;
+  font-size: 1.5em;
+  padding: 0.3em;
+  border: none;
+  border-radius: 0.5em;
+  background-color: #e8ebf7;
+  color: #00a878;
+}
+
+button:hover {
+  background-color: goldenrod;
+  color: #e8ebf7;
+}
+
+.BodyContainer {
+  background: #e8ebf7;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2em;
+}
+
+.Header {
+  color: #00a878;
+  text-align: center;
+}
+
+.Header h4 {
+  font-size: 0.8em;
+  font-weight: normal;
+}
+
+.Totals {
+  background-color: #00a878;
+  color: #e8ebf7;
+  padding-right: 4em;
+  padding-left: 4em;
+  padding-top: 1em;
+  padding-bottom: 1em;
+  border-radius: 0.5em;
+  box-shadow: 0 0.5em 0.5em 0 rgba(0, 0, 0, 0.2),
+    0 0.7em 0.7em 0 rgba(0, 0, 0, 0.1);
+  font-size: 1.1em;
+}
+
+.Totals h4 {
+  text-align: center;
+}
+
+.HoleContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2em;
+}
+
+.Hole {
+  background-color: #00a87832;
+  color: #39304a;
+  padding-right: 4em;
+  padding-left: 4em;
+  padding-top: 1em;
+  padding-bottom: 1em;
+  border-radius: 0.5em;
+  box-shadow: 0 0.5em 0.5em 0 rgba(0, 0, 0, 0.2),
+    0 0.7em 0.7em 0 rgba(0, 0, 0, 0.1);
+  font-size: 1.3em;
+}
+
+.Hole h2 {
+  text-align: center;
+}
+
+/* .Hole h4 {
+  text-align: center;
+} */
+
+input {
+  font-size: 1em;
+  width: 1em;
+  text-align: center;
+  border: none;
+  border-radius: 0.5em;
+  margin-left: 0.2em;
+  padding: 0.2em;
+  background-color: #00a878;
+  color: #e8ebf7;
+}
+
+li {
+  padding-left: 0;
+  list-style: none;
+}

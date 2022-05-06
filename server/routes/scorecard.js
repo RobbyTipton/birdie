@@ -15,6 +15,16 @@ router.get(
   }
 );
 
+router.get(
+  '/:scorecardId/opponent',
+  scorecardController.findOpponent,
+  scorecardController.getPlayerDataFromOpponent,
+  scorecardController.getOpponentDataFromOpponent,
+  (req, res) => {
+    res.status(200).json(res.locals);
+  }
+);
+
 router.post('/:scorecardId/player', scorecardController.updatePlayerScore, (req, res) => {
   res.status(200).json('Updated player score in database.');
 });
